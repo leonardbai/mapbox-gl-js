@@ -44,12 +44,6 @@ varying vec2 v_fade_tex;
 varying float v_gamma_scale;
 varying float v_size;
 
-// Dummy overload so that evaluate_zoom_function_1(a_size, ...) call below
-// compiles when {text,icon}-size is not a composite function.
-float evaluate_zoom_function_1(float size, float layout_size_t) {
-    return -1.0;
-}
-
 void main() {
     #pragma mapbox: initialize highp vec4 fill_color
     #pragma mapbox: initialize highp vec4 halo_color

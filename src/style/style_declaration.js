@@ -3,6 +3,10 @@
 const createFunction = require('../style-spec/function');
 const util = require('../util/util');
 
+/**
+ * A style property declaration
+ * @private
+ */
 class StyleDeclaration {
 
     constructor(reference, value) {

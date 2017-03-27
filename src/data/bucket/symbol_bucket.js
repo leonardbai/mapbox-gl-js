@@ -104,7 +104,7 @@ function addCollisionBoxVertex(layoutVertexArray, point, extrude, maxZoom, place
         placementZoom * 10);
 }
 
-/*
+/**
  * Unlike other buckets, which simply implement #addFeature with type-specific
  * logic for (essentially) triangulating feature geometries, SymbolBucket
  * requires specialized behavior:
@@ -128,8 +128,8 @@ function addCollisionBoxVertex(layoutVertexArray, point, extrude, maxZoom, place
  * at tile load time, whereas `place` must be invoked on already-loaded tiles
  * when the pitch/orientation are changed. (See `redoPlacement`.)
  *
+ * @private
  */
-
 class SymbolBucket {
     constructor(options) {
         this.collisionBoxArray = options.collisionBoxArray;
