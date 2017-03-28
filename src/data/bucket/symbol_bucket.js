@@ -70,24 +70,26 @@ const symbolInterfaces = {
 };
 
 function addVertex(array, x, y, ox, oy, tx, ty, sizeData, minzoom, maxzoom, labelminzoom, labelangle) {
-    array.emplaceBack.apply(array,
-        [
-            // a_pos_offset
-            x,
-            y,
-            Math.round(ox * 64),
-            Math.round(oy * 64),
+    array.emplaceBack(
+        // a_pos_offset
+        x,
+        y,
+        Math.round(ox * 64),
+        Math.round(oy * 64),
 
-            // a_texture_pos
-            tx / 4, // x coordinate of symbol on glyph atlas texture
-            ty / 4, // y coordinate of symbol on glyph atlas texture
+        // a_texture_pos
+        tx / 4, // x coordinate of symbol on glyph atlas texture
+        ty / 4, // y coordinate of symbol on glyph atlas texture
 
-            // a_data
-            (labelminzoom || 0) * 10, // labelminzoom
-            labelangle, // labelangle
-            (minzoom || 0) * 10, // minzoom
-            Math.min(maxzoom || 25, 25) * 10 // maxzoom
-        ].concat(sizeData || []) // a_size
+        // a_data
+        (labelminzoom || 0) * 10, // labelminzoom
+        labelangle, // labelangle
+        (minzoom || 0) * 10, // minzoom
+        Math.min(maxzoom || 25, 25) * 10, // maxzoom
+        // a_size
+        sizeData ? sizeData[0] : undefined,
+        sizeData ? sizeData[1] : undefined,
+        sizeData ? sizeData[2] : undefined
     );
 }
 
