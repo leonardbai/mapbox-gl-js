@@ -41,7 +41,7 @@ vec4 evaluate_zoom_function_4(const vec4 value0, const vec4 value1, const vec4 v
 // packedValue = floor(input[0]) * 256 + input[1],
 vec2 unpack_float(const float packedValue) {
     float v0 = floor(packedValue / 256.0);
-    return vec2(v0, (packedValue - v0 * 256.0) / 255.0);
+    return vec2(v0, packedValue - v0 * 256.0);
 }
 
 
