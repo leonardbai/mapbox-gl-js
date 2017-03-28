@@ -28,11 +28,11 @@ void main() {
     float fontScale = u_is_text ? v_size / 24.0 : v_size;
 
     lowp vec4 color = fill_color;
-    highp float gamma = EDGE_GAMMA / (v_size * u_gamma_scale);
+    highp float gamma = EDGE_GAMMA / (fontScale * u_gamma_scale);
     lowp float buff = (256.0 - 64.0) / 256.0;
     if (u_is_halo) {
         color = halo_color;
-        gamma = (halo_blur * 1.19 / SDF_PX + EDGE_GAMMA) / (v_size * u_gamma_scale);
+        gamma = (halo_blur * 1.19 / SDF_PX + EDGE_GAMMA) / (fontScale * u_gamma_scale);
         buff = (6.0 - halo_width / fontScale) / SDF_PX;
     }
 

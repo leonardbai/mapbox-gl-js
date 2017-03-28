@@ -201,7 +201,7 @@ function drawTileSymbols(program, programConfiguration, painter, layer, tile, bu
     if (isSDF) {
         const haloWidthProperty = `${isText ? 'text' : 'icon'}-halo-width`;
         const hasHalo = !layer.isPaintValueFeatureConstant(haloWidthProperty) || layer.paint[haloWidthProperty];
-        const gammaScale = (isText ? 1 / 24 : 1) * (pitchWithMap ? Math.cos(tr._pitch) : 1) * tr.cameraToCenterDistance;
+        const gammaScale = (pitchWithMap ? Math.cos(tr._pitch) : 1) * tr.cameraToCenterDistance;
         gl.uniform1f(program.u_gamma_scale, gammaScale);
 
         if (hasHalo) { // Draw halo underneath the text.
