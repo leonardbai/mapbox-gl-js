@@ -78,7 +78,7 @@ void main() {
         gl_Position.z += z * gl_Position.w;
     } else {
         gl_Position = u_matrix * vec4(a_pos, 0, 1);
-        perspective_ratio += u_text_pitch_scale*((gl_Position.w / u_camera_to_center_distance) - 1.0);
+        perspective_ratio += (1.0 - u_text_pitch_scale)*((gl_Position.w / u_camera_to_center_distance) - 1.0);
         extrude *= perspective_ratio;
         gl_Position += vec4(extrude, 0, 0);
     }
