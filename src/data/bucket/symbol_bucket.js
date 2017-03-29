@@ -478,8 +478,8 @@ class SymbolBucket {
             const addToBuffers = inside || mayOverlap;
             this.addSymbolInstance(anchor, line, shapedTextOrientations, shapedIcon, this.layers[0],
                 addToBuffers, this.collisionBoxArray, feature.index, feature.sourceLayerIndex, this.index,
-                layoutTextSize, textBoxScale, textPadding, textAlongLine,
-                layoutIconSize, iconBoxScale, iconPadding, iconAlongLine,
+                textBoxScale, textPadding, textAlongLine,
+                iconBoxScale, iconPadding, iconAlongLine,
                 {zoom: this.zoom}, feature.properties);
         };
 
@@ -753,8 +753,8 @@ class SymbolBucket {
      * @private
      */
     addSymbolInstance(anchor, line, shapedTextOrientations, shapedIcon, layer, addToBuffers, collisionBoxArray, featureIndex, sourceLayerIndex, bucketIndex,
-        layoutTextSize, textBoxScale, textPadding, textAlongLine,
-        layoutIconSize, iconBoxScale, iconPadding, iconAlongLine, globalProperties, featureProperties) {
+        textBoxScale, textPadding, textAlongLine,
+        iconBoxScale, iconPadding, iconAlongLine, globalProperties, featureProperties) {
 
         let textCollisionFeature, iconCollisionFeature;
         let iconQuads = [];
