@@ -34,7 +34,7 @@ uniform bool u_pitch_with_map;
 uniform mediump float u_pitch;
 uniform mediump float u_bearing;
 uniform mediump float u_aspect_ratio;
-uniform mediump float u_viewport_height;
+uniform mediump float u_camera_to_center_distance;
 uniform mediump float u_text_pitch_scale;
 uniform vec2 u_extrude_scale;
 
@@ -131,11 +131,10 @@ void main() {
     // pitch-alignment: viewport
     // rotation-alignment: viewport
     } else {
-        //gl_Position = u_matrix * vec4(a_pos, 0, 1) + vec4(extrude, 0, 0)
         gl_Position = u_matrix * vec4(a_pos, 0, 1);
-  
+
         vec2 extrude = fontScale * u_extrude_scale * (a_offset / 64.0);
-        perspective_ratio += u_text_pitch_scale*(gl_Position.w / (u_viewport_height*2.0) - 1.0);
+        perspective_ratio += u_text_pitch_scale*((gl_Position.w / u_camera_to_center_distance) - 1.0);
         extrude *= perspective_ratio;
 
         gl_Position += vec4(extrude, 0, 0);
@@ -144,5 +143,6 @@ void main() {
     v_gamma_scale = gl_Position.w;
 
     v_tex = a_tex / u_texsize;
-    v_fade_tex = vec2(a_labelminzoom*perspective_ratio / 255.0, 0.0);
+    highp float perspective_zoom_adjust = log2(perspective_ratio)*10.0 / 255.0;
+    v_fade_tex = vec2((a_labelminzoom / 255.0) + perspective_zoom_adjust, 0.0);
 }

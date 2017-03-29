@@ -27,8 +27,8 @@ class CollisionTile {
             this.ignoredGrid = new Grid(EXTENT, 12, 0);
         }
 
-        this.minScale = 0.1;
-        this.maxScale = 2;
+        this.minScale = 0.000001;
+        this.maxScale = 4;
 
         this.angle = angle;
         this.pitch = pitch;

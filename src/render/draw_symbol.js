@@ -181,7 +181,7 @@ function setSymbolDrawState(program, painter, layer, tileZoom, isText, isSDF, ro
         const size = layer.getLayoutValue(sizeProp, {zoom: tr.zoom});
         gl.uniform1f(program.u_size, size);
     }
-    gl.uniform1f(program.u_viewport_height, tr.height);
+    gl.uniform1f(program.u_camera_to_center_distance, tr.cameraToCenterDistance);
     gl.uniform1f(program.u_text_pitch_scale, 0.7);
 }
 
