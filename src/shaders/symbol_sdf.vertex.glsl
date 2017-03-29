@@ -140,7 +140,7 @@ void main() {
         gl_Position += vec4(extrude, 0, 0);
     }
 
-    v_gamma_scale = gl_Position.w;
+    v_gamma_scale = gl_Position.w / perspective_ratio;
 
     v_tex = a_tex / u_texsize;
     highp float perspective_zoom_adjust = log2(perspective_ratio)*10.0 / 255.0;
