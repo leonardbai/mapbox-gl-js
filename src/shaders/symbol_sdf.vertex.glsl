@@ -91,6 +91,8 @@ void main() {
     mediump float zoomAdjust = log2(v_size / layoutSize);
     mediump float adjustedZoom = (u_zoom - zoomAdjust) * 10.0;
     // result: z = 0 if a_minzoom <= adjustedZoom < a_maxzoom, and 1 otherwise
+    // Used below to move the vertex out of the clip space for when the current
+    // zoom is out of the glyph's zoom range.
     mediump float z = 2.0 - step(a_minzoom, adjustedZoom) - (1.0 - step(a_maxzoom, adjustedZoom));
 
     // pitch-alignment: map
