@@ -182,6 +182,7 @@ function setSymbolDrawState(program, painter, layer, tileZoom, isText, isSDF, ro
         gl.uniform1f(program.u_size, size);
     }
     gl.uniform1f(program.u_viewport_height, tr.height);
+    gl.uniform1f(program.u_text_pitch_scale, 0.7);
 }
 
 function drawTileSymbols(program, programConfiguration, painter, layer, tile, buffers, isText, isSDF, pitchWithMap) {
