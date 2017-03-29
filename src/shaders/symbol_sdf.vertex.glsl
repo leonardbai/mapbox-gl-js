@@ -54,8 +54,11 @@ void main() {
     vec2 a_offset = a_pos_offset.zw;
 
     vec2 a_tex = a_data.xy;
+
     mediump vec2 label_data = unpack_float(a_data[2]);
     mediump float a_labelminzoom = label_data[0];
+    mediump float a_labelangle = label_data[1];
+
     mediump vec2 a_zoom = unpack_float(a_data[3]);
     mediump float a_minzoom = a_zoom[0];
     mediump float a_maxzoom = a_zoom[1];
@@ -93,7 +96,7 @@ void main() {
     // pitch-alignment: map
     // rotation-alignment: map | viewport
     if (u_pitch_with_map) {
-        lowp float angle = u_rotate_with_map ? (label_data[1] / 256.0 * 2.0 * PI) : u_bearing;
+        lowp float angle = u_rotate_with_map ? (a_labelangle / 256.0 * 2.0 * PI) : u_bearing;
         lowp float asin = sin(angle);
         lowp float acos = cos(angle);
         mat2 RotationMatrix = mat2(acos, asin, -1.0 * asin, acos);
@@ -109,7 +112,7 @@ void main() {
         // it goes from 0% foreshortening to up to around 70% foreshortening
         lowp float pitchfactor = 1.0 - cos(u_pitch * sin(u_pitch * 0.75));
 
-        lowp float lineangle = label_data[1] / 256.0 * 2.0 * PI;
+        lowp float lineangle = a_labelangle / 256.0 * 2.0 * PI;
 
         // use the lineangle to position points a,b along the line
         // project the points and calculate the label angle in projected space
